@@ -1,4 +1,5 @@
 #include "types.h"
+#include "gdt.h"
 
 void printf(char* str) {
 	uint16_t* VideoMemory = (uint16_t*) 0xb8000;
@@ -20,5 +21,6 @@ extern "C" void callConstructors(){
 
 extern "C" void kernelMain(void* multibootStrcuture, uint32_t magicNumber) {
 	printf("Welcome to oudadOS ! -- 3ezzy loves you all!");
+	GlobalDescriptorTable gdt;
 	while(1);
 } 
