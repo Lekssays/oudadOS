@@ -2,7 +2,7 @@
 cpp_params = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore
 as_params = --32
 ld_params = -melf_i386
-o_files = loader.o gdt.o kernel.o
+o_files = loader.o gdt.o port.o kernel.o
 
 %.o: %.cpp
 	g++ $(cpp_params) -o $@ -c $<
@@ -32,3 +32,7 @@ oudadOS.iso: oudadOS.bin
 	# I am developping it on a VM (Ubuntu 16.04 LTS)
 	# Copy the file into a shared folder to run it outside the VM 
 	sudo cp oudadOS.iso ../Share/ 
+
+
+clean:
+	rm -f $(o_files) oudadOS.iso oudadOS.bin 
