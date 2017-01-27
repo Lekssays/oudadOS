@@ -1,8 +1,10 @@
 # Build OS's Files
-cpp_params = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore
+cpp_params = -O0 -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
 as_params = --32
 ld_params = -melf_i386
-o_files = loader.o gdt.o interruptstubs.o interrupts.o ports.o kernel.o
+o_files = loader.o gdt.o port.o interruptstubs.o interrupts.o kernel.o
+
+#interruptstubs.o interrupts.o
 
 %.o: %.cpp
 	g++ $(cpp_params) -o $@ -c $<
