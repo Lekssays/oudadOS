@@ -9,7 +9,7 @@ I would like to thank Mr. Viktor Engelmann for explaining well the hard concepts
 
 ## TODO:
 - Memory Segments and Global Descriptor Table (done)
-- Hardware Communication 
+- Hardware Communication and Ports (done)
 - Interrupts 
 - Abstraction for Drivers
 - PCI
