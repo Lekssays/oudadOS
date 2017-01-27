@@ -1,7 +1,6 @@
 #include "interrupts.h"
 #include "port.h"
 
-
 void printf(char* str);
 
 InterruptManager::GateDescriptor InterruptManager::interruptDescriptorTable[256];

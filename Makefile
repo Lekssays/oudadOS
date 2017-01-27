@@ -4,8 +4,6 @@ as_params = --32
 ld_params = -melf_i386
 o_files = loader.o gdt.o port.o interruptstubs.o interrupts.o kernel.o
 
-#interruptstubs.o interrupts.o
-
 %.o: %.cpp
 	g++ $(cpp_params) -o $@ -c $<
 
@@ -31,8 +29,8 @@ oudadOS.iso: oudadOS.bin
 	echo '}' >> iso/boot/grub/grub.cfg
 	grub-mkrescue --output=$@ iso
 	rm -rf iso
-	# I am developping it on a VM (Ubuntu 16.04 LTS)
-	# Copy the file into a shared folder to run it outside the VM 
+	# I am developping it on a VM (Ubuntu 16.04 LTS) (Guest) on macOS Sierra (Host)
+	# I copy the file into a shared folder between the guest and the host to run it on the host
 	sudo cp oudadOS.iso ../Share/ 
 
 
