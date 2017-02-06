@@ -56,27 +56,26 @@ uint16_t InterruptManager::HardwareInterruptOffset() {
 }
 
 void InterruptManager::Activate() {
-	/*if(ActivateInterruptManager != 0)
+	if(ActivateInterruptManager != 0)
 		ActivateInterruptManager->Deactivate();
-	ActivateInterruptManager = this;*/
+	ActivateInterruptManager = this;
 	asm("sti");
 }
 
 void InterruptManager::Deactivate() {
-	/*if(ActivateInterruptManager == this){
+	if(ActivateInterruptManager == this){
 		ActivateInterruptManager = 0;
 		asm("cli");
-	}*/
+	}
 }
 
 uint32_t InterruptManager::HandleInterrupt(uint8_t interruptNumber, uint32_t esp) {
-	/*if(ActivateInterruptManager != 0)
-		return ActivateInterruptManager->DoHandleInterrupt(interruptNumber, esp);*/
-	printf(" INTERRUPT\n");
+	if(ActivateInterruptManager != 0)
+		return ActivateInterruptManager->DoHandleInterrupt(interruptNumber, esp);
 	return esp;
 }
 
-/*uint32_t InterruptManager::DoHandleInterrupt(uint8_t interruptNumber, uint32_t esp) {
+uint32_t InterruptManager::DoHandleInterrupt(uint8_t interruptNumber, uint32_t esp) {
 	if(interruptNumber != 0x20)
 		printf(" INTERRUPT\n");
 	if(0x20 <= interruptNumber && interruptNumber < 0x30){
@@ -85,4 +84,4 @@ uint32_t InterruptManager::HandleInterrupt(uint8_t interruptNumber, uint32_t esp
 			picSlaveCommand.Write(0X20);
 	}
 	return esp;
-}*/
+}
