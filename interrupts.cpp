@@ -15,25 +15,22 @@ void InterruptManager::SetInterruptDescriptorTableEntry(uint8_t interruptNumber,
 	interruptDescriptorTable[interruptNumber].reserved = 0;
 }
 
-InterruptManager::InterruptManager(GlobalDescriptorTable* gdt)
-:   picMasterCommand(0x20),
-	picMasterData(0x21),
-	picSlaveCommand(0xA0),
-	picSlaveData(0xA1)
-{
+InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescriptorTable* gdt) : picMasterCommand(0x20), picMasterData(0x21), picSlaveCommand(0xA0), picSlaveData(0xA1) {
+	this->hardwareInterruptOffset = hardwareInterruptOffset;
 	uint16_t codeSegment = gdt->CodeSegmentSelector();
 	const uint8_t IDT_INTERRUPT_GATE = 0xE;
-	for(uint16_t i = 255; i > 0; --i) 
+
+	for(uint8_t i = 255; i > 0; --i) 
 		SetInterruptDescriptorTableEntry(i, codeSegment, &IgnoreInterruptRequest, 0, IDT_INTERRUPT_GATE);
 
-	SetInterruptDescriptorTableEntry(0x20, codeSegment, &HandleInterruptRequest0x00, 0, IDT_INTERRUPT_GATE);
-	SetInterruptDescriptorTableEntry(0x21, codeSegment, &HandleInterruptRequest0x01, 0, IDT_INTERRUPT_GATE);
+	SetInterruptDescriptorTableEntry(hardwareInterruptOffset + 0x00, codeSegment, &HandleInterruptRequest0x00, 0, IDT_INTERRUPT_GATE);
+	SetInterruptDescriptorTableEntry(hardwareInterruptOffset + 0x01, codeSegment, &HandleInterruptRequest0x01, 0, IDT_INTERRUPT_GATE);
 	
 	picMasterCommand.Write(0x11);
 	picSlaveCommand.Write(0x11);
 
-	picMasterData.Write(0x20);
-	picSlaveData.Write(0x28);
+	picMasterData.Write(hardwareInterruptOffset);
+	picSlaveData.Write(hardwareInterruptOffset + 8);
 
 	picMasterData.Write(0x04);
 	picSlaveData.Write(0x02);
@@ -54,29 +51,38 @@ InterruptManager::~InterruptManager() {
 
 }
 
+uint16_t InterruptManager::HardwareInterruptOffset() {
+	return hardwareInterruptOffset;
+}
+
 void InterruptManager::Activate() {
-	if(ActivateInterruptManager != 0)
+	/*if(ActivateInterruptManager != 0)
 		ActivateInterruptManager->Deactivate();
-	ActivateInterruptManager = this;
+	ActivateInterruptManager = this;*/
 	asm("sti");
 }
 
 void InterruptManager::Deactivate() {
-	if(ActivateInterruptManager == this){
+	/*if(ActivateInterruptManager == this){
 		ActivateInterruptManager = 0;
 		asm("cli");
-	}
-}
-
-uint32_t InterruptManager::DoHandleInterrupt(uint8_t interruptNumber, uint32_t esp) {
-	printf(" INTERRUPT");
-	//if(0x20 <= interruptNumber && interruptNumber < 0x30)
-
-	return esp;
+	}*/
 }
 
 uint32_t InterruptManager::HandleInterrupt(uint8_t interruptNumber, uint32_t esp) {
-	if(ActivateInterruptManager != 0)
-		return ActivateInterruptManager->DoHandleInterrupt(interruptNumber, esp);
+	/*if(ActivateInterruptManager != 0)
+		return ActivateInterruptManager->DoHandleInterrupt(interruptNumber, esp);*/
+	printf(" INTERRUPT\n");
 	return esp;
 }
+
+/*uint32_t InterruptManager::DoHandleInterrupt(uint8_t interruptNumber, uint32_t esp) {
+	if(interruptNumber != 0x20)
+		printf(" INTERRUPT\n");
+	if(0x20 <= interruptNumber && interruptNumber < 0x30){
+		picMasterCommand.Write(0x20);
+		if(0x28 <= interruptNumber)
+			picSlaveCommand.Write(0X20);
+	}
+	return esp;
+}*/

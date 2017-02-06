@@ -1,7 +1,7 @@
 #include "types.h"
 #include "gdt.h"
 #include "interrupts.h"
-
+	
 void printf(char* str) {
 	static uint16_t* VideoMemory = (uint16_t*) 0xb8000;
 	static uint8_t x = 0, y = 0;
@@ -28,7 +28,6 @@ void printf(char* str) {
 	}
 }
 
-	
 typedef void (*constructor)();
 extern "C" constructor start_ctors;
 extern "C" constructor end_ctors;
@@ -39,10 +38,10 @@ extern "C" void callConstructors(){
 	}
 }
 
-extern "C" void kernelMain(void* multibootStrcuture, uint32_t magicNumber) {
-	printf("Welcome to oudadOS !\n oudadOS - An Open-Source Lightweight Operating System :)");
+extern "C" void kernelMain(const void* multibootStrcuture, uint32_t magicNumber) {
+	printf("oudadOS - An Open-Source Lightweight Operating System\nhttps://www.github.com/Lekssays/oudadOS\n");
 	GlobalDescriptorTable gdt;
-	InterruptManager interrupts(&gdt);
+	InterruptManager interrupts(0x20, &gdt);
 	interrupts.Activate();
 	while(1);
 } 

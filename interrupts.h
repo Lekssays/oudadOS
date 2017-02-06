@@ -30,22 +30,24 @@ protected:
 		uint8_t descriptorType
 	);
 
+	uint16_t hardwareInterruptOffset;
+	static uint32_t HandleInterrupt(uint8_t interruptNumber, uint32_t esp);
+	//uint32_t DoHandleInterrupt(uint8_t interruptNumber, uint32_t esp);
+	static void IgnoreInterruptRequest();
+	static void HandleInterruptRequest0x00(); 
+	static void HandleInterruptRequest0x01();
+
 	Port8BitSlow picMasterCommand;
 	Port8BitSlow picMasterData;
 	Port8BitSlow picSlaveCommand;
 	Port8BitSlow picSlaveData;
 
 public:
-	InterruptManager(GlobalDescriptorTable* gdt);
+	InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescriptorTable* gdt);
 	~InterruptManager();
+	uint16_t HardwareInterruptOffset();
 	void Activate();
 	void Deactivate();
-	static uint32_t HandleInterrupt(uint8_t interruptNumber, uint32_t esp);
-	uint32_t DoHandleInterrupt(uint8_t interruptNumber, uint32_t esp);
-	static void IgnoreInterruptRequest();
-	static void HandleInterruptRequest0x00(); 
-	static void HandleInterruptRequest0x01();
-
 };
 
 #endif

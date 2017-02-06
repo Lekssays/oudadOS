@@ -34,6 +34,7 @@ int_bottom:
 	pushl %esp
 	push (interruptNumber)
 	call _ZN16InterruptManager15HandleInterruptEhj
+	add %esp, 6
 	movl %eax, %esp
 
 	# Pop in reverse order since it is a stack 
