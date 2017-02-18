@@ -9,6 +9,7 @@ o_files = obj/loader.o \
           obj/com/port.o \
           obj/com/interruptstubs.o \
           obj/com/interrupts.o \
+          obj/com/pci.o \
           obj/drivers/keyboard.o \
 	  obj/drivers/mouse.o \
           obj/kernel.o

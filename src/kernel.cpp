@@ -1,6 +1,7 @@
 #include "../lib/common/types.h"
 #include "../lib/gdt.h"
 #include "../lib/com/interrupts.h"
+#include "../lib/com/pci.h"
 #include "../lib/drivers/drivers.h"
 #include "../lib/drivers/keyboard.h"
 #include "../lib/drivers/mouse.h"
@@ -122,6 +123,8 @@ extern "C" void kernelMain(const void* multibootStrcuture, uint32_t magicNumber)
     MouseToConsole mshandler;
     MouseDriver mouse(&interrupts, &mshandler);
     drvManager.AddDriver(&mouse);
+    PeripheralComponentInterconnectController PCIController;
+    PCIController.SelectDrivers(&drvManager, &interrupts);
     drvManager.ActivateAll();
 	interrupts.Activate();
 	while(1);
