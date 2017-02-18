@@ -24,6 +24,7 @@ namespace oudad {
             ~KeyboardDriver();
             virtual oudad::common::uint32_t HandleInterrupt(oudad::common::uint32_t esp);
             virtual void Activate();
+            void SetLeds();
         };
     }
 }

@@ -150,7 +150,7 @@ void KeyboardDriver::Activate() {
     dataport.Write(0xf4);
 }
 
-void KeyboardDriver::SetLeds() { //TODO
+void KeyboardDriver::SetLeds() {
     dataport.Write(0xED);
     while(commandport.Read() & 2);
     dataport.Write(led_status);
