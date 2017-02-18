@@ -20,7 +20,7 @@ obj/%.o: src/%.cpp
 obj/%.o: src/%.s
 	mkdir -p $(@D)
 	as $(as_params) -o $@ $<
-	
+
 oudadOS.bin: linker.ld $(o_files)
 	ld $(ld_params) -T $< -o $@ $(o_files)
 
@@ -40,10 +40,7 @@ oudadOS.iso: oudadOS.bin
 	echo '}' >> iso/boot/grub/grub.cfg
 	grub-mkrescue --output=$@ iso
 	rm -rf iso
-	# I am developping it on a VM (Ubuntu 16.04 LTS)
-	# Copy the file into a shared folder to run it outside the VM 
-	sudo cp oudadOS.iso ../Share/ 
 
 .PHONY: clean
 clean:
-	rm -f $(o_files) oudadOS.iso oudadOS.bin 
+	rm -f $(o_files) oudadOS.iso oudadOS.bin
