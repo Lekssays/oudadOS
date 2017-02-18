@@ -11,7 +11,7 @@ I would like to thank Mr. Viktor Engelmann for explaining well the hard concepts
 - Memory Segments and Global Descriptor Table (done)
 - Hardware Communication and Ports (done)
 - Interrupts (done)
-- Abstraction for Drivers
+- Abstraction for Drivers (Done)
 - PCI
 - Graphics and GUI
 - Multitasking
