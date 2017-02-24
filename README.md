@@ -26,6 +26,19 @@ oudadOS is free software. You can redistribute it and/or modify it under the ter
 ## Acknowledgements: 
 I would like to thank Mr. Viktor Engelmann for explaining well the hard concepts of OSs on YouTube in "Make your own OS" series. I would like to thank also www.osdev.org for the great documentation and articles about OSs. I would like to thank OSDEV reddit community for sharing the knowledge for free. I would like to thank Dr. Stallings thanks to his great reference "Operating Systems: Internals and Design Principles" and Mr. Robert Love thanks to his amazing reference "Linux Kernel Development".
 
+## Screenshots:
+- Bootloader:
+
+![alt text](http://i.imgur.com/F33GqR0.png "Bootloader")
+
+- Main Screen:
+
+![alt text](http://i.imgur.com/C3oCnjy.png "Main Screen")
+
+- Writing on the Screen:
+
+![alt text](http://i.imgur.com/1J5Svws.png "Writing on the Screen")
+
 ## TODO:
 - Memory Segments and Global Descriptor Table (done)
 - Hardware Communication and Ports (done)
