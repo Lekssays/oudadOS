@@ -1,5 +1,7 @@
 # oudadOS
-An Open-Source Lightweight Operating System Built from Scratch for Educational Purposes with C++ and Assembly
+An Open-Source Lightweight Operating System Built from Scratch for Educational Purposes with C++ and Assembly. 
+
+- This work is on progress. (Check TODO for more information)
 
 ## Description:
 oudadOS is an operating system built from scratch because of my interest in operating systems and my passion to live such hard, great, and rewarding learning experience. oudadOS is designed in an object oriented manner for x86 architectures. You might find some parts of the operating system that are not written in an elegant way. You might find some mistakes in the Object Oriented design that I followed. The ultimate purpose of coding it from scratch is learning.
@@ -15,8 +17,13 @@ oudadOS has 3 main parts as you see in the repository.
   - drivers: abstraction of devices' drivers implementations
 
 ## Build:
+- Generate .iso image for oudadOS:
 ```
-make oudadOS.iso
+$ make oudadOS.iso
+```
+- Clean up:
+```
+$ make clean
 ```
 Please note that I am developing oudadOS on a guest VM (Ubuntu Xenial Xerus) on a host (masOS Sierra) with a shared folder between them. I am testing it on a VM machine on my host. You can have a different scenario like developing and testing it in the same machine
 
@@ -43,7 +50,7 @@ I would like to thank Mr. Viktor Engelmann for explaining well the hard concepts
 - Memory Segments and Global Descriptor Table (done)
 - Hardware Communication and Ports (done)
 - Interrupts (done)
-- Abstraction for Drivers (Done)
+- Abstraction for Drivers (done)
 - PCI
 - Graphics and GUI
 - Multitasking
