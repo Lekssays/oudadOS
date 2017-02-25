@@ -6,7 +6,7 @@ An Open-Source Lightweight Operating System Built from Scratch for Educational P
 ## Description:
 oudadOS is an operating system built from scratch because of my interest in operating systems and my passion to live such hard, great, and rewarding learning experience. oudadOS is designed in an object oriented manner for x86 architectures. You might find some parts of the operating system that are not written in an elegant way. You might find some mistakes in the Object Oriented design that I followed. The ultimate purpose of coding it from scratch is learning.
 
-## Strcuture:
+## Structure:
 oudadOS has 3 main parts as you see in the repository. 
 - lib: .h files - Libraries that are used by the sec files
   - com: hardware communication libraries
@@ -60,3 +60,5 @@ I would like to thank Mr. Viktor Engelmann for explaining well the hard concepts
 - System Calls
 - Partition Tables
 - File Systems
+
+oudadOS is made with ![alt text](https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-16.png "Made with Love")
