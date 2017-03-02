@@ -1,1 +1,5 @@
-make oudadOS.iso
+language: cpp
+install: make oudadOS.iso
+compiler:
+  - clang
+  - gcc
