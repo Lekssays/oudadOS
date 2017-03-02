@@ -1,2 +1,4 @@
-language: cpp
-install: make oudadOS.bin
+os: linux
+script: 
+  - make oudadOS.bin
+  - make clean
