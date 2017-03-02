@@ -12,6 +12,8 @@
 .extern .callConstructors
 .global loader
 
+kernelStack: 
+
 loader:
 	mov $kernelStack, %esp
 	call callConstructors
@@ -26,4 +28,3 @@ _stop:
 
 .section .bss
 .space 3 * 1024 * 1024;
-kernelStack: 
