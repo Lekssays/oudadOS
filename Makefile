@@ -26,4 +26,4 @@ oudadOS.bin: linker.ld $(o_files)
 
 .PHONY: clean
 clean:
-	rm -f $(o_files) oudadOS.iso oudadOS.bin 
+	rm -f $(o_files) oudadOS.bin 
