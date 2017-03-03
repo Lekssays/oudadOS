@@ -57,7 +57,7 @@ I would like to thank Mr. Viktor Engelmann for explaining well the hard concepts
 - Hardware Communication and Ports (done)
 - Interrupts (done)
 - Abstraction for Drivers (done)
-- PCI
+- PCI (ongoing)
 - Graphics and GUI
 - Multitasking
 - Dynamic Memory Management
