@@ -3,8 +3,6 @@
 # oudadOS
 An Open-Source Lightweight Operating System Built from Scratch for Educational Purposes with C++ and Assembly. 
 
-- This work is on progress. (Check TODO for more information)
-
 ## Description:
 oudadOS is an operating system built from scratch because of my interest in operating systems and my passion to live such hard, great, and rewarding learning experience. oudadOS is designed in an object oriented manner for x86 architectures. You might find some parts of the operating system that are not written in an elegant way. You might find some mistakes in the Object Oriented design that I followed. The ultimate purpose of coding it from scratch is learning.
 
@@ -55,7 +53,7 @@ I would like to thank Mr. Viktor Engelmann for explaining well the hard concepts
 ## Contribution:
 If you detected any bugs or you want to suggest some improvements in oudadOS, please feel to submit a pull request or contact me by email ```ahmed [at] lekssays [dot] com```. If you faced a critical error in VirtualBox, please move ```kernelStack:``` tag in line 15 in ```loader.s``` to the bottom (after line 30). This change is caused by the differece in Assemblers. If you are using Ubuntu Xenial Xerus, this should be fine.
 
-## TODO:
+## Improvements:
 - Memory Segments and Global Descriptor Table (done)
 - Hardware Communication and Ports (done)
 - Interrupts (done)
