@@ -19,6 +19,10 @@ oudadOS has 3 main parts as you see in the repository.
   - drivers: abstraction of devices' drivers implementations
 
 ## Build:
+
+For this repository, I used travis-ci, so the makefile genrates just the binary file of the operating system.
+If you want to generate an ISO image, please refer to ```MakefileISO``` file in this repository. Just copy the content of ```MakefileISO``` to ```Makefile``` then follow the steps below.
+
 - Generate .iso image for oudadOS:
 ```
 $ make oudadOS.iso
