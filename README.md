@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/Lekssays/oudadOS.svg?branch=master)](https://travis-ci.org/Lekssays/oudadOS)
-
-# oudadOS
+# oudadOS [![Build Status](https://travis-ci.org/Lekssays/oudadOS.svg?branch=master)](https://travis-ci.org/Lekssays/oudadOS)
 An Open-Source Lightweight Operating System Built from Scratch for Educational Purposes with C++ and Assembly. 
 
 ## Description:
