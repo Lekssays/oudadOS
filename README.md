@@ -56,7 +56,7 @@ If you detected any bugs or you want to suggest some improvements in oudadOS, pl
 - Hardware Communication and Ports (done)
 - Interrupts (done)
 - Abstraction for Drivers (done)
-- PCI (ongoing)
+- PCI (done)
 - Graphics and GUI
 - Multitasking
 - Dynamic Memory Management
