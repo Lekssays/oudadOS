@@ -48,6 +48,10 @@ I would like to thank Mr. Viktor Engelmann for explaining well the hard concepts
 
 ![alt text](http://i.imgur.com/1J5Svws.png "Writing on the Screen")
 
+- PCI & Mouse:
+
+![alt text](http://i.imgur.com/R9XTMNf.png "PCI & Mouse")
+
 ## Contribution:
 If you detected any bugs or you want to suggest some improvements in oudadOS, please feel to submit a pull request or contact me by email ```ahmed [at] lekssays [dot] com```. If you faced a critical error in VirtualBox, please move ```kernelStack:``` tag in line 15 in ```loader.s``` to the bottom (after line 30). This change is caused by the differece in Assemblers. If you are using Ubuntu Xenial Xerus, this should be fine.
 
