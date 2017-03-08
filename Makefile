@@ -26,22 +26,6 @@ obj/%.o: src/%.s
 	
 oudadOS.bin: linker.ld $(o_files)
 	ld $(ld_params) -T $< -o $@ $(o_files)
-
-install: oudadOS.bin
-	sudo cp $< /boot/oudadOS.bin
-
-oudadOS.iso: oudadOS.bin
-	mkdir iso
-	mkdir iso/boot
-	mkdir iso/boot/grub
-	cp $< iso/boot
-	echo 'set_timeout=0' >> iso/boot/grub/grub.cfg
-	echo 'set_default=0' >> iso/boot/grub/grub.cfg
-	echo 'menuentry "oudadOS"{' >> iso/boot/grub/grub.cfg
-	echo '	multiboot /boot/oudadOS.bin' >> iso/boot/grub/grub.cfg
-	echo '	boot' >> iso/boot/grub/grub.cfg
-	echo '}' >> iso/boot/grub/grub.cfg
-	grub-mkrescue --output=$@ iso
 	
 .PHONY: clean
 clean:
