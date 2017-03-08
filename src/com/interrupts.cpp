@@ -37,12 +37,13 @@ void InterruptManager::SetInterruptDescriptorTableEntry(uint8_t interrupt,
 }
 
 
-InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescriptorTable* globalDescriptorTable)
+InterruptManager::InterruptManager(uint16_t hardwareInterruptOffset, GlobalDescriptorTable* globalDescriptorTable, TaskManager* taskManager)
     : picMasterCommandPort(0x20),
       picMasterDataPort(0x21),
       picSlaveCommandPort(0xA0),
       picSlaveDataPort(0xA1)
 {
+    this->taskManager = taskManager;
     this->hardwareInterruptOffset = hardwareInterruptOffset;
     uint32_t CodeSegment = globalDescriptorTable->CodeSegmentSelector();
 
@@ -156,6 +157,9 @@ uint32_t InterruptManager::DoHandleInterrupt(uint8_t interrupt, uint32_t esp) {
         printfHex(interrupt);
     }
 
+    if(interrupt == hardwareInterruptOffset) {
+        esp = (uint32_t)taskManager->Schedule((CPUState*) esp);
+    }
     // acknowledged
     if(hardwareInterruptOffset <= interrupt && interrupt < hardwareInterruptOffset + 16) {
         picMasterCommandPort.Write(0x20);

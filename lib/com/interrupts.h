@@ -3,6 +3,7 @@
 
 #include "../gdt.h"
 #include "../common/types.h"
+#include "../multitasking.h"
 #include "port.h"
 
 namespace oudad {
@@ -26,6 +27,7 @@ namespace oudad {
 
                 static InterruptManager* ActiveInterruptManager;
                 InterruptHandler* handlers[256];
+                TaskManager *taskManager;
 
                 struct GateDescriptor {
                     oudad::common::uint16_t handlerAddressLowBits;
@@ -101,7 +103,7 @@ namespace oudad {
                 oudad::common::uint32_t DoHandleInterrupt(oudad::common::uint8_t interrupt, oudad::common::uint32_t esp);
 
             public:
-                InterruptManager(oudad::common::uint16_t hardwareInterruptOffset, oudad::GlobalDescriptorTable* globalDescriptorTable);
+                InterruptManager(oudad::common::uint16_t hardwareInterruptOffset, oudad::GlobalDescriptorTable* globalDescriptorTable, oudad::TaskManager* taskManager);
                 ~InterruptManager();
                 oudad::common::uint16_t HardwareInterruptOffset();
                 void Activate();

@@ -1,5 +1,6 @@
 #include "../lib/common/types.h"
 #include "../lib/gdt.h"
+#include "../lib/multitasking.h"
 #include "../lib/com/interrupts.h"
 #include "../lib/com/pci.h"
 #include "../lib/drivers/drivers.h"
@@ -18,10 +19,6 @@ void printf(char* str) {
 	for(int i = 0; str[i] != '\0'; i++) {
 		switch(str[i]) {
 			case '\n': y++; x = 0; break;
-			/*case '0x08' : 
-				x--; 
-				VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0xFF00) | str[i];
-			break;*/
 			default:
 				VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0xFF00) | str[i];
 				x++;	
@@ -70,8 +67,8 @@ public:
         x = 40;
         y = 12;
         VideoMemory[80 * y + x] = (VideoMemory[80 * y + x] & 0x0F00) << 4
-                            | (VideoMemory[80*y+x] & 0xF000) >> 4
-                            | (VideoMemory[80*y+x] & 0x00FF);        
+                            | (VideoMemory[80 * y + x] & 0xF000) >> 4
+                            | (VideoMemory[80 * y + x] & 0x00FF);        
     }
     
     virtual void OnMouseMove(int xoffset, int yoffset) {
@@ -112,10 +109,26 @@ extern "C" void callConstructors(){
 	}
 }
 
-extern "C" void kernelMain(const void* multibootStrcuture, uint32_t magicNumber) {
+void programA(void) {
+    while(true)
+        printf("programA");
+}
+
+void programB(void) {
+    while(true)
+        printf("programB");
+}
+
+extern "C" void kernelMain(const void* multibootStrcuture, uint32_t magicNumber) { 
 	printf("oudadOS - An Open-Source Lightweight Operating System\nhttps://www.github.com/Lekssays/oudadOS\n");
 	GlobalDescriptorTable gdt;
-	InterruptManager interrupts(0x20, &gdt);
+    TaskManager taskManager;
+    Task task1(&gdt, programA);
+    Task task2(&gdt, programB);
+    // Uncomment the two lines if you want to run the programs
+    //taskManager.AddTask(&task1); 
+    //taskManager.AddTask(&task2);
+	InterruptManager interrupts(0x20, &gdt, &taskManager);
 	DriverManager drvManager;
     PrintfKeyboardEventHandler kbhandler;
     KeyboardDriver keyboard(&interrupts, &kbhandler);
