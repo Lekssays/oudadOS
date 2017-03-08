@@ -11,8 +11,7 @@
 .extern .kernelMain
 .extern .callConstructors
 .global loader
-
-kernelStack: 
+kernelStack:
 
 loader:
 	mov $kernelStack, %esp
