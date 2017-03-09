@@ -61,8 +61,8 @@ If you detected any bugs or you want to suggest some improvements in oudadOS, pl
 - Interrupts (done)
 - Abstraction for Drivers (done)
 - PCI (done)
-- Graphics and GUI
-- Multitasking
+- Graphics and GUI (pending)
+- Multitasking (done)
 - Dynamic Memory Management
 - Networking
 - Ports and Protocols
