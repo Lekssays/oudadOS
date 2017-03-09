@@ -1,5 +1,7 @@
 # oudadOS [![Build Status](https://travis-ci.org/Lekssays/oudadOS.svg?branch=master)](https://travis-ci.org/Lekssays/oudadOS)
-An Open-Source Lightweight Operating System Built from Scratch for Educational Purposes with C++ and Assembly. 
+An Open-Source Lightweight Operating System Built from Scratch for Educational Purposes with C++ and Assembly.
+
+![alt text](http://i.imgur.com/zOchIVg.jpg "oudadOS Logo")
 
 ## Description:
 oudadOS is an operating system built from scratch because of my interest in operating systems and my passion to live such hard, great, and rewarding learning experience. oudadOS is designed in an object oriented manner for x86 architectures. You might find some parts of the operating system that are not written in an elegant way. You might find some mistakes in the Object Oriented design that I followed. The ultimate purpose of coding it from scratch is learning.
